@@ -37,6 +37,19 @@ resource "aws_subnet" "private" {
   tags = { Name = "private-subnet" }
 }
 
+
+
+#create public add subnet
+resource "aws_subnet" "public_1" {
+  vpc_id                  = aws_vpc.main.id #VPC name
+  cidr_block              = "10.0.5.0/24"
+  availability_zone       = "us-west-2a"
+  tags = { Name = "public-subnet" }
+}
+
+
+
+
 #create internetgateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id          #Attach with VPC name
